@@ -47,4 +47,33 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+})
+
+.factory('auth', function() {
+
+    var expSeconds=30;
+
+    return {
+      logout:function(){
+        localStorage.setItem("token", JSON.stringify({
+          'token':null,
+          'expire':new Date()-1-expSeconds*1000
+        }));
+      },
+      setToken:function(str){
+        localStorage.setItem("token", JSON.stringify({
+          'token':str,
+          'expire':new Date()-1+expSeconds*1000
+        }));
+      },
+      getToken:function(){
+        return JSON.parse(localStorage.getItem("token"));
+      },
+      isValid:function(){
+        var token=this.getToken();
+        console.log('expire in='+(token.expire-(new Date()-1)));
+        return (token && token.token && token.expire>new Date()-1) ? 1: 0;
+      }
+    }
+  });
+;
