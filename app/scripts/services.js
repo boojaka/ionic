@@ -51,7 +51,7 @@ angular.module('starter.services', [])
 
 .factory('auth', function() {
 
-    var expSeconds=30;
+    var expSeconds=120;
 
     return {
       logout:function(){
@@ -67,7 +67,10 @@ angular.module('starter.services', [])
         }));
       },
       getToken:function(){
-        return JSON.parse(localStorage.getItem("token"));
+        return JSON.parse(localStorage.getItem("token")) || {
+            'token':'',
+            'expire':0
+          };
       },
       isValid:function(){
         var token=this.getToken();
