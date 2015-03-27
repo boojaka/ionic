@@ -40,10 +40,17 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('ChatsCtrl', function($scope, Chats) {
-    $scope.chats = Chats.all();
-    $scope.remove = function(chat) {
-      Chats.remove(chat);
+  .controller('ChatsCtrl', function($scope, todo) {
+    $scope.items=todo.all();
+    $scope.data={
+      text:''
+    };
+    $scope.add=function(){
+      todo.add($scope.data.text);
+      $scope.data.text='';
+    };
+    $scope.remove=function(id){
+      todo.remove(id);
     }
   })
 

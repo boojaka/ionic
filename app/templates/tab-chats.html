@@ -1,16 +1,20 @@
-<ion-view view-title="Chats">
+<ion-view view-title="Todo" xmlns="http://www.w3.org/1999/html">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+     <ul class="list">
+       <form ng-submit="add()">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="" ng-model="data.text">
+          </label>
+          <input type="submit" class="button button-small" value="Submit">
+        </div>
+       </form>
+      <li class="item" ng-repeat="item in items">
+        {{item}}
+        <button style="float:right;" class="button button-small button-outline button-assertive" ng-click="remove($index)">
+          DELETE
+        </button>
+      </li>
+    </ul>
   </ion-content>
 </ion-view>

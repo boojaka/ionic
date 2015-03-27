@@ -1,6 +1,6 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <div class="list">
+<form ng-submit="login()">
       <label class="item item-input">
         <span class="input-label">Username</span>
         <input type="text" ng-model="loginData.user">
@@ -9,9 +9,8 @@
         <span class="input-label">Password</span>
         <input type="password" ng-model="loginData.pass">
       </label>
-    </div>
-    <button class="button button-block button-positive" ng-click="login()">
-      Login
-    </button>
+
+    <input type="submit" class="button button-block button-positive"  value="Login">
+</form>
   </ion-content>
 </ion-view>
