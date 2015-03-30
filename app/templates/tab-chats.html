@@ -1,6 +1,15 @@
 <ion-view view-title="Todo" xmlns="http://www.w3.org/1999/html">
   <ion-content>
      <ul class="list">
+       <li class="item item-toggle">
+         Offline - <b>{{!online}}</b>
+         <label class="toggle toggle-assertive" ng-click="toggle()">
+           <input type="checkbox" ng-checked="!online">
+           <div class="track">
+             <div class="handle"></div>
+           </div>
+         </label>
+       </li>
        <form ng-submit="add()">
         <div class="item item-input-inset">
           <label class="item-input-wrapper">
