@@ -18,9 +18,9 @@
           <input type="submit" class="button button-small" value="Submit">
         </div>
        </form>
-      <li class="item" ng-repeat="item in items">
-        {{item}}
-        <button style="float:right;" class="button button-small button-outline button-assertive" ng-click="remove($index)">
+      <li class="item" ng-repeat="task in tasks">
+        {{task.title}}
+        <button style="float:right;" class="button button-small button-outline button-assertive" ng-click="remove(task._id)">
           DELETE
         </button>
       </li>

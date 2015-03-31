@@ -42,11 +42,12 @@ angular.module('starter.controllers', [])
 
   .controller('ChatsCtrl', function(todoDb,$scope, todo) {
     $scope.online=false;
-
+    $scope.tasks=[];
     $scope.toggle=function(){
       $scope.online=!$scope.online;
       if ($scope.online) {  // Read http://pouchdb.com/api.html#sync
-        $scope.sync = todoDb.sync('http://127.0.0.1:5984/todos', {live: true})
+        $scope.sync = todoDb.sync('http://95.85.3.132:5984/todos', {live: true})
+        //$scope.sync = todoDb.sync('http://127.0.0.1:5984/todos', {live: true})
           .on('error', function (err) {
             console.log("Syncing stopped");
             console.log(err);
@@ -88,11 +89,16 @@ angular.module('starter.controllers', [])
       text:''
     };
     $scope.add=function(){
-      todo.add($scope.data.text);
+      todoDb.post({'title':$scope.data.text}, function(err, res) {
+        if (err) console.log(err);
+      });
       $scope.data.text='';
+
     };
     $scope.remove=function(id){
-      todo.remove(id);
+      todoDb.get(id, function (err, doc) {
+        todoDb.remove(doc, function (err, res) {});
+      });
     }
   })
 
