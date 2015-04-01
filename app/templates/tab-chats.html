@@ -2,7 +2,10 @@
   <ion-content>
      <ul class="list">
        <li class="item item-toggle">
-         Offline - <b>{{!online}}</b>
+         <b>
+           <span ng-show="online" style="color:limegreen;">Online</span>
+           <span ng-hide="online" style="color:red;">Offline</span>
+         </b>
          <label class="toggle toggle-assertive" ng-click="toggle()">
            <input type="checkbox" ng-checked="!online">
            <div class="track">

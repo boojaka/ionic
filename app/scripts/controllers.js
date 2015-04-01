@@ -19,13 +19,17 @@ angular.module('starter.controllers', [])
       }
 
       $scope.login=function(){
-        if($scope.loginData.user=='admin' && $scope.loginData.pass=='admin'){
+
+        auth.setToken('supertoken');
+        $state.go('tab.dash');
+
+        /*if($scope.loginData.user=='admin' && $scope.loginData.pass=='admin'){
             auth.setToken('supertoken');
             $state.go('tab.dash');
             $scope.loginData.pass='';
         }else{
             alert('use admin/admin');
-        }
+        }*/
       };
   })
   .controller('DashCtrl', function($rootScope,$scope,auth,$state) {
